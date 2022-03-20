@@ -8,7 +8,7 @@ this.playCode = 1;
 audio.controls = true;
 this.state = 0;
 this.playerState = true;
-dark.selectId("test").innerText = 2.2;
+dark.selectId("test").innerText = 2.3;
 
 var play = dark.selectId("play");
 var pause = dark.selectId("pause");
@@ -63,14 +63,18 @@ previous.addEventListener("click", Previous);
 
 audio.addEventListener("timeupdate", function () {
 	for (currentLine = 0; currentLine < oLRC.ms.length; currentLine++) {
-		if (this.currentTime < oLRC.ms[currentLine + 1].t){
-			currentLine > 0 ? __eul.children[currentLine - 1].setAttribute("style", "color: auto") : null;
-			currentLine > 1 ? __eul.children[currentLine - 2].setAttribute("style", "color: auto") : null;
-			currentLine > 2 ? __eul.children[currentLine - 3].setAttribute("style", "color: auto") : null;
-			currentLine > 3 ? __eul.children[currentLine - 4].setAttribute("style", "color: auto") : null;
-			__eul.children[currentLine].setAttribute("style", "color: rgb(170, 170, 170)");
-			__eul.style.transform = "translateY(" + (ppxx - __eul.children[currentLine].offsetTop) + "px)";
-			break;
+		try {
+			if (this.currentTime < oLRC.ms[currentLine + 1].t){
+				currentLine > 0 ? __eul.children[currentLine - 1].setAttribute("style", "color: auto") : null;
+				currentLine > 1 ? __eul.children[currentLine - 2].setAttribute("style", "color: auto") : null;
+				currentLine > 2 ? __eul.children[currentLine - 3].setAttribute("style", "color: auto") : null;
+				currentLine > 3 ? __eul.children[currentLine - 4].setAttribute("style", "color: auto") : null;
+				__eul.children[currentLine].setAttribute("style", "color: rgb(170, 170, 170)");
+				__eul.style.transform = "translateY(" + (ppxx - __eul.children[currentLine].offsetTop) + "px)";
+				break;
+			}
+		} catch (err) {
+			console.log("Time Error", err);
 		}
 	}
 });
