@@ -8,7 +8,7 @@ this.playCode = 1;
 audio.controls = true;
 this.state = 0;
 this.playerState = true;
-dark.selectId("test").innerText = 2.3;
+dark.selectId("test").innerText = 2.4;
 
 var play = dark.selectId("play");
 var pause = dark.selectId("pause");
